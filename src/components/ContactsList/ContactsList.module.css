@@ -1,0 +1,30 @@
+.section {
+  margin: 0 auto;
+  padding-left: 15px;
+}
+.list {
+  list-style: none;
+  width: 400px;
+  padding: 0;
+}
+.contact::before {
+  content: '🐱‍👤';
+  margin-right: 10px;
+}
+.item {
+  text-transform: capitalize;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  border-radius: 3px;
+  background-color: rgb(142, 168, 240);
+  color: aliceblue;
+  transition: all 150ms linear;
+}
+.button:hover {
+  background-color: rgb(253, 59, 59);
+  transition: all 150ms linear;
+}

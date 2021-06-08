@@ -1,0 +1,33 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-right: 10px;
+}
+
+.text {
+  margin: 0 10px 0 0;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.text::before {
+  content: '🦝';
+  margin-right: 7px;
+}
+.button {
+  margin-bottom: 10px;
+  background-color: rgb(86, 86, 214);
+  color: #fff;
+  border: transparent;
+  width: 53px;
+  height: 25px;
+  border-radius: 20%;
+  transition: all 150ms linear;
+}
+
+.button:hover {
+  background-color: rgb(253, 59, 59);
+  transition: all 150ms linear;
+}

@@ -1,0 +1,13 @@
+.section {
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+}
+.image {
+  margin-right: 100px;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 45px;
+}
