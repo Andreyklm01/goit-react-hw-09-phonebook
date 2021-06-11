@@ -47,5 +47,3 @@ export default combineReducers({
   isLogIn,
   error,
 });
-
-//ошибка при перезагрзке страницы, контакты раньше пользователя
