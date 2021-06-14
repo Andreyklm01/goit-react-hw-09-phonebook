@@ -5,8 +5,7 @@ const AuthNav = () => (
   <ul className={s.list}>
     <li className={s.item}>
       <NavLink to="/login" className={s.link} activeClassName={s.activeLink}>
-        {' '}
-        Log In{' '}
+        Log In
       </NavLink>
     </li>
     <li className={s.item}>
@@ -15,8 +14,7 @@ const AuthNav = () => (
         className={s.link}
         activeClassName={s.activeLink}
       >
-        {' '}
-        Sign Up{' '}
+        Sign Up
       </NavLink>
     </li>
   </ul>

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Component, useEffect } from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   fetchContacts,
   deleteName,
@@ -11,16 +11,6 @@ import {
 } from '../../redux/contacts/contacts-selectors';
 import s from './ContactsList.module.css';
 
-//   const mapStateToProps = state => ({
-//   contacts: getVisibleContacts(state),
-//   isLoading: getLoading(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   onDelete: id => dispatch(deleteName(id)),
-//   getContacts: () => dispatch(fetchContacts()),
-// });
-
 export default function ContactsList() {
   const contacts = useSelector(getVisibleContacts);
   const isLoading = useSelector(getLoading);
@@ -30,7 +20,7 @@ export default function ContactsList() {
 
   useEffect(() => {
     setTimeout(() => dispatch(fetchContacts()));
-  }, []);
+  }, [dispatch]); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   return (
     <section className={s.section}>
