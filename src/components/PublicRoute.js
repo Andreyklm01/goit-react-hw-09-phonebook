@@ -1,5 +1,5 @@
 import { Route, Redirect } from 'react-router-dom';
-import { connect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getIsAuthorized } from '../redux/auth/auth-selectors';
 
 /**

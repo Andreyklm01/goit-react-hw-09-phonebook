@@ -3,27 +3,25 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
 import s from './LoginForm.module.css';
 
+const initialState = {
+  email: '',
+  password: '',
+};
+
 export default function LoginForm() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleChangeEmail = ({ target }) => {
-    setEmail(target.value);
-  };
-  const handleChangePassword = ({ target }) => {
-    setPassword(target.value);
+  const [{ email, password }, setUser] = useState(initialState);
+
+  const handleChange = ({ target }) => {
+    setUser(prev => ({ ...prev, [target.name]: target.value }));
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(login({ email, password }));
-    resetInput();
-  };
 
-  const resetInput = () => {
-    setEmail('');
-    setPassword('');
+    setUser(initialState);
   };
 
   return (
@@ -36,7 +34,7 @@ export default function LoginForm() {
             type="email"
             value={email}
             name="email"
-            onChange={handleChangeEmail}
+            onChange={handleChange}
             placeholder="Email"
             required
           />
@@ -48,7 +46,7 @@ export default function LoginForm() {
             type="password"
             value={password}
             name="password"
-            onChange={handleChangePassword}
+            onChange={handleChange}
             placeholder="Password"
             required
           />

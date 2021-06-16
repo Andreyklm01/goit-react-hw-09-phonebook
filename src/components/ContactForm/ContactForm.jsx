@@ -5,18 +5,19 @@ import { getAllContacts } from '../../redux/contacts/contacts-selectors';
 import { v4 as uuidv4 } from 'uuid';
 import s from './ContactForm.module.css';
 
+const initialState = {
+  name: '',
+  number: '',
+};
+
 function ContactForm() {
   const contacts = useSelector(getAllContacts);
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [{ name, number }, setCurrentContact] = useState(initialState);
 
-  const handleChangeName = ({ target }) => {
-    setName(target.value);
-  };
-  const handleChangeNumber = ({ target }) => {
-    setNumber(target.value);
+  const handleChange = ({ target }) => {
+    setCurrentContact(prev => ({ ...prev, [target.name]: target.value }));
   };
 
   const handleSubmit = event => {
@@ -30,12 +31,7 @@ function ContactForm() {
       ? alert(`${name.toUpperCase()} is allready in contacts`)
       : dispatch(addName({ name, number }));
 
-    resetInput();
-  };
-
-  const resetInput = () => {
-    setName('');
-    setNumber('');
+    setCurrentContact(initialState);
   };
 
   const inputNameId = uuidv4();
@@ -55,7 +51,7 @@ function ContactForm() {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
-            onChange={handleChangeName}
+            onChange={handleChange}
           />
         </label>
         <h3 className={s.title}>Number</h3>
@@ -69,7 +65,7 @@ function ContactForm() {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
-            onChange={handleChangeNumber}
+            onChange={handleChange}
           />
         </label>
         <button className={s.button} type="submit">
