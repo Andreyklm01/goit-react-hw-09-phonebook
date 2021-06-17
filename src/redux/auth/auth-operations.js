@@ -34,6 +34,7 @@ export const registration = data => async dispatch => {
     dispatch(registerSuccess(response.data));
   } catch (error) {
     dispatch(registerError(error.message));
+    alert('Something went wrong. Please try another email or password');
   }
 };
 
@@ -47,6 +48,7 @@ export const login = data => async dispatch => {
     dispatch(loginSuccess(response.data));
   } catch (error) {
     dispatch(loginError(error.message));
+    alert('Wrong email or password');
   }
 };
 export const logout = () => async dispatch => {
